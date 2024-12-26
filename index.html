@@ -101,16 +101,19 @@
             transform: scale(1.2);
         }
         .github-container {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* Adjust spacing between the logo and the text */
-}
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
 
-.github-container span {
-    font-size: 1rem;
-    color: #555;
-    font-weight: bold;
-}
+        .github-container span {
+            font-size: 1rem;
+            color: #555;
+            font-weight: bold;
+        }
 
     </style>
 </head>
@@ -128,15 +131,15 @@
     
 <div class="footer">
     Made by <a href="https://shanmukhisaway.github.io/P-folio/" target="_blank">@shanmukhsrinivas</a>
-    <br><br>
-    <div class="github-container">
-        <a href="https://github.com/shanmukhisaway/DataLink-Forge" target="_blank">
-            <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="GitHub" class="github-logo">
-        </a>
-        <span>Code</span>
-    </div>
 </div>
-    
+
+<div class="github-container">
+    <a href="https://github.com/shanmukhisaway/DataLink-Forge" target="_blank">
+        <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="GitHub" class="github-logo">
+    </a>
+    <span>Code</span>
+</div>
+
 <script>
     function generateDataUrl() {
         var htmlCode = document.getElementById('htmlCode').value;
@@ -157,7 +160,6 @@
         document.execCommand('copy');
         document.body.removeChild(tempInput);
 
-        
         var copyButton = document.getElementById('copyButton');
         copyButton.innerText = 'Copied!';
         copyButton.classList.add('copied');
