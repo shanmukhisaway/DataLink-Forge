@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataLink Forge</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #d9f7fa, #c9e4f0);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            max-width: 900px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8px);
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: #666;
+        }
+        textarea {
+            width: 700px;
+            height: 200px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 1rem;
+            color: #333;
+            background-color: #f7f7f7;
+            resize: none;
+        }
+        .data-url-container {
+            max-width: 100%;
+            overflow-x: auto;
+            background: #eef6f9;
+            padding: 10px;
+            border-radius: 5px;
+            color: #333;
+            margin-bottom: 20px;
+            border: 1px solid #d3e2e6;
+        }
+        button {
+            padding: 12px 25px;
+            background: #87ceeb;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: #6bb8d6;
+        }
+        #copyButton.copied {
+            background: #90ee90;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1rem;
+            color: #555;
+        }
+        .footer a {
+            color: #87ceeb;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .footer a:hover {
+            color: #6bb8d6;
+        }
+        .github-logo {
+            width: 24px;
+            height: 24px;
+            margin-left: 10px;
+            vertical-align: middle;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .github-logo:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <meta name="author" content="Surakarapu Shanmukh Srinivas">
+<div class="container">
+    <h1>DataLink Forge</h1>
+    <p>Convert your HTML code into a sharable Data URL effortlessly.</p>
+    <textarea id="htmlCode" oninput="generateDataUrl()" placeholder="Enter your HTML code here..."></textarea>
+    <div class="data-url-container">
+        <p id="dataUrl" class="data-url">Your Data URL will appear here...</p>
+    </div>
+    <button id="copyButton" onclick="copyToClipboard()" disabled>Copy</button>
+</div>
+<div class="footer">
+    Made by <a href="https://shanmukhisaway.github.io/P-folio/" target="_blank">@shanmukhsrinivas</a>
+    <a href="https://github.com/your-repo" target="_blank">
+        <img src="https://shanmukhisaway.github.io/P-folio/asset/svg/github.svg" alt="GitHub" class="github-logo">
+    </a>
+</div>
+
+<script>
+    function generateDataUrl() {
+        var htmlCode = document.getElementById('htmlCode').value;
+        var encodedHtml = encodeURIComponent(htmlCode);
+        var dataUrl = 'data:text/html;charset=utf-8,' + encodedHtml;
+        document.getElementById('dataUrl').innerText = dataUrl;
+        document.getElementById('copyButton').disabled = false;
+        document.getElementById('copyButton').classList.remove('copied');
+        document.getElementById('copyButton').innerText = 'Copy';
+    }
+
+    function copyToClipboard() {
+        var dataUrl = document.getElementById('dataUrl').innerText;
+        var tempInput = document.createElement('input');
+        tempInput.value = dataUrl;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+
+        
+        var copyButton = document.getElementById('copyButton');
+        copyButton.innerText = 'Copied!';
+        copyButton.classList.add('copied');
+    }
+</script>
+</body>
+</html>
