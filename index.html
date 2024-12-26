@@ -113,15 +113,18 @@
     </div>
     <button id="copyButton" onclick="copyToClipboard()" disabled>Copy</button>
 </div>
+    
 <div class="footer">
     Made by <a href="https://shanmukhisaway.github.io/P-folio/" target="_blank">@shanmukhsrinivas</a>
     <br><br>
-    <a href="https://github.com/shanmukhisaway/DataLink-Forge" target="_blank">
-        <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="GitHub" class="github-logo">
-    </a> 
-    Code
+    <div class="github-container">
+        <a href="https://github.com/shanmukhisaway/DataLink-Forge" target="_blank">
+            <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="GitHub" class="github-logo">
+        </a>
+        <span>Code</span>
+    </div>
 </div>
-
+    
 <script>
     function generateDataUrl() {
         var htmlCode = document.getElementById('htmlCode').value;
